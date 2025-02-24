@@ -1,0 +1,162 @@
+<html>
+<head>
+    <title>Lab4</title> 
+
+    <style>
+
+        body {
+
+            background-color: aqua;
+        }
+        .main-container {
+            display: grid;
+            grid-template-columns: 50% 40%;
+            gap: 10px;
+        }
+
+        .partial-container{
+            background-color: rgb(117, 13, 221);
+            color: rgb(255, 255, 255);
+            border: 2px solid rgb(255, 255, 255);
+            padding: 10px;
+            border-radius: 10px;
+
+
+        }
+
+        /* .nameForm {
+            background-color: rgb(117, 13, 221);
+            color: rgb(255, 255, 255);
+            border: 2px solid rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px;
+            width: 40%;
+            height: 5%;
+            float: left;
+           
+        } */
+
+        /* .changeColorButton{
+            background-color: rgb(117, 13, 221);
+            color: rgb(255, 255, 255);
+            border: 2px solid rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px;
+            width: 40%;
+            height: 5%;
+            float: right;
+            
+        } */
+        /* .validateBox{
+            background-color: rgb(117, 13, 221);
+            color: rgb(255, 255, 255);
+            border: 2px solid rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px;
+            height: 5%;
+            width: 40%;
+            float: left;
+        }
+
+
+        .addTextButton {
+            background-color: rgb(117, 13, 221);
+            color: rgb(255, 255, 255);
+            border: 2px solid rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px;
+            height: 5%;
+            width: 40%;
+            float: right;
+        } */
+    
+
+    </style>
+ </head>
+
+<body>
+
+    <h1 id="headingElement">Lab 4</h1>
+
+    <div class="main-container">
+        <div class = "partial-container">
+            <!-- Alert Form -->
+            <form name="nameForm" onsubmit="return alertMessage()">
+                <label for="name"> Name:</label>
+                <input type="text" id="firstName" required>
+                <input type="submit" value="Alert Me!">
+            </form>
+        </div>
+
+        <!-- Change Color -->
+        <div class = "partial-container">
+             <button onclick="changeColor()">Change The Color</button>
+        </div>
+
+        <!-- Test form -->
+        <div class = "partial-container">  
+            <form name="testForm" onsubmit="return validateMessage()">
+                <label for="test"> Enter:</label>
+                <input type="text" id="test" required>
+                <input type="submit" value="Validate Test">
+            </form>
+        </div>
+
+         <!-- Add text-->
+        <div class = "partial-container">
+            <button onclick="addText()">Add Text</button>
+
+        </div>
+
+    </div>
+
+
+     <!-- Javascript Code -->
+     <script type="text/javascript">
+         function alertMessage() {
+            console.log('Validating user input:', document.nameForm.name.value)
+            let nameEntered = document.getElementById("firstName").value;
+            alert('Hi ' + nameEntered)
+            return false        
+         }
+
+         function changeColor() {
+
+            console.log('Change color of background, current color is: ', document.body.style.backgroundColor)
+            if (document.body.style.backgroundColor == 'aqua') {
+                document.body.style.backgroundColor = 'green';
+            } else {
+                document.body.style.backgroundColor = 'aqua';
+            }
+            console.log('Successfully changed color of background, new color is: ', document.style.backgroundColor)
+         }
+
+
+         function validateMessage() {
+            var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+            if (validation.test(document.testForm.test.value)) {
+                alert('How about..... nah :(')
+
+                return false;
+            }
+
+         }
+
+         function addText() {
+            const titleHeading = document.getElementById("headingElement");
+            let text = " - Adding text";
+            titleHeading.insertAdjacentText("beforeend", text);
+
+
+            
+         }
+
+     </script>
+</body>
+
+</html>
